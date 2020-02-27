@@ -21,5 +21,6 @@ from core import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.books, name = 'books'),
+    path('books/new/', views.new_book, name='new-book'),
     # path('', views.index, name = 'index'),
 ]
