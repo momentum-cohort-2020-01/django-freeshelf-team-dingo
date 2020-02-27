@@ -5,9 +5,10 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     description = models.TextField()
-    # url = #parking lot
+    url = models.CharField(max_length=500)
+    
 
-# def __str__(self):
-#         return f"Note title: {self.title} body: {self.body}"
+    def __str__(self):
+        return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url}'
 
-# Create your models here.
+
