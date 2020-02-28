@@ -7,5 +7,8 @@
   {{book.url}}
 </div>
 <div>
+  <a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a>
+  <a href="{% url 'delete-book' pk=book.pk %}" class="button-danger">Delete Book</a>
+  <a href="{% url 'books' %}" class="button">Home</a>
 </div>
 {% endblock %}
