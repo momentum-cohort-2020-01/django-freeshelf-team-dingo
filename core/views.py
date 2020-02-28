@@ -31,9 +31,9 @@ def edit_book(request, pk)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
         if form.is_valid(): 
-            note = form.save()
+            book = form.save()
             return redirect('books-detail', pk=book.pk)
     else: 
-        form = BookForm(instance=note)
+        form = BookForm(instance=book)
     return render(request, 'core/new_book.html', {'form': form})
 
