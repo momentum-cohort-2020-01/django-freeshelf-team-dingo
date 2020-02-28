@@ -40,3 +40,9 @@ def edit_book(request, pk):
     else:
         form = BookForm(instance=book)
     return render(request, 'core/new_book.html', {'form': form})
+
+def delete_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    book.delete
+    return redirect('/')
+
