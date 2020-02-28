@@ -21,8 +21,8 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.books, name='books'),
-    path('books/new/', views.new_book, name='new-book'),
-    path('books/<int:pk>', views.books_detail, name="books-detail"),
-    path('books/<int:pk>/edit/', views.edit_book, name='edit-book'),
+    path('book/new/', views.new_book, name='new-book'),
+    path('book/<int:pk>', views.books_detail, name='books-detail'),
+    path('book/<int:pk>/edit/', views.edit_book, name='edit-book'),
     # path('', views.index, name = 'index'),
 ]

@@ -15,7 +15,7 @@ def books(request):
 
 def books_detail(request, pk):
     book = Book.objects.get(pk=pk)
-    return render(request, 'core/book_detail.html', {'book': book, "pk": pk})
+    return render(request, 'core/books_detail.html', {'book': book, "pk": pk})
 
 
 def new_book(request):
@@ -37,7 +37,7 @@ def edit_book(request, pk):
         if form.is_valid():
             book = form.save()
             form.save()
-            return redirect('books-detail')
+            return redirect('books', pk=book.pk)
     else:
         form = BookForm(instance=book)
-    return render(request, 'core/edit_book.html', {'form': form})
+    return render(request, 'core/books_details.html', {'form': form})
