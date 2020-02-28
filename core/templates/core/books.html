@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
-    Hello world
-  {{book.title}}
-  {{book.author}}
-  {{book.description}}
-  {{book.url}}
-</div>
-<div>
-  
-</div>
+
+<table>
+  <thead>
+    <tr>
+      <th> My Books</th>
+
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td><a href="{% url 'books-detail' book.pk %}">{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.description}}</td>
+      <td>{{book.url}}</td>
+    </tr></a>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'new-book' %}" class="button">New Book</a>
+
 {% endblock %}

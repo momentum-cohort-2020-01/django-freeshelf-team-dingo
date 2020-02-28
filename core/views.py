@@ -36,7 +36,8 @@ def edit_book(request, pk):
         form = BookForm(request.POST, instance=book)
         if form.is_valid():
             book = form.save()
-            return redirect('books-detail', pk=book.pk)
+            form.save()
+            return redirect('books-detail')
     else:
         form = BookForm(instance=book)
-    return render(request, 'core/new_book.html', {'form': form})
+    return render(request, 'core/edit_book.html', {'form': form})
