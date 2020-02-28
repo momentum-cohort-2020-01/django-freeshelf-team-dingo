@@ -18,6 +18,8 @@
       <td>{{book.author}}</td>
       <td>{{book.description}}</td>
       <td>{{book.url}}</td>
+      <td><a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a></td>
+      <td><a href="{% url 'delete-book' pk=book.pk %}" class="button-danger">Delete Book</a></td>
     </tr></a>
     {% endfor %}
   </tbody>
