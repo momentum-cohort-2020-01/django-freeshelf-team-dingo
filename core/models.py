@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200)
@@ -8,8 +9,21 @@ class Book(models.Model):
     url = models.CharField(max_length=500)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now=True)
+    tag = models.ForeignKey(
+        'Tag', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
         return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url}'
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=40)
+    slug = models.SlugField(null=False, unique=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
