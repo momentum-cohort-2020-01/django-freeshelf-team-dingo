@@ -6,7 +6,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     description = models.TextField()
-    url = models.CharField(max_length=500)
+    url = models.URLField(max_length=200)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now=True)
     tag = models.ForeignKey(
