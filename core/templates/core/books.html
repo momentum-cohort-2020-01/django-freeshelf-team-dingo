@@ -3,46 +3,48 @@
 
 <body class="body">
   <div class="headercontainer">
-      <h1 class="header"> My Books </h1>
-      <div class="newbook">
-        <a href="{% url 'new-book' %}" class="button">New Book</a>
-      </div>
+    <h1 class="header"> My Books </h1>
+    <div class="newbook">
+      <a href="{% url 'new-book' %}" class="button">New Book</a>
+    </div>
   </div>
 
-    {% for book in books %}
+  {% for book in books %}
   <div class="bookcontainer">
     <div>
       <h3 class="title">
-        <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>  
+        <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>
       </h3>
-        <p class="details">
-          {{book.author}}
-          {{book.created_at}}
-        </p>
+      <p class="details">
+        {{book.author}}
+      </p>
     </div>
 
-      <div class="description">
-        {{book.description}}
-        <p>
-        {{book.url}}
-        </p>
-      </div>
-   
-    
+    <div class="description">
+      {{book.description}}
       <p>
-        {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+        <a href="{{book.url}}">{{book.url}}</a>
       </p>
-
-      <p class="edit-delete">
-      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
-      
-      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+      <p>
+        Created at: {{book.created_at}}
       </p>
     </div>
 
-    {% endfor %}
 
-  </body>
+    <p>
+      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+    </p>
+
+    <p class="edit-delete">
+      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+
+      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+    </p>
+  </div>
+
+  {% endfor %}
+
+</body>
 <!-- <div>
 <a href="{% url 'new-book' %}" class="button">New Book</a>
 </div> -->
