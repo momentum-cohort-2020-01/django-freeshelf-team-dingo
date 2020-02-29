@@ -1,0 +1,110 @@
+:root {
+  --main-title-color: #FC7753;
+  --background-color:#F2EFEA;
+  --main-text-color:#393E41;
+  --accent-color:#66D7D1;
+  --accent-color2:#DBD56E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  display: flex;
+}
+
+a {
+  background:
+     linear-gradient(
+       to right,
+       var(--accent-color2) 0%,
+       var(--accent-color2) 5px,
+       transparent 5px
+     );
+    background-repeat: repeat-x;
+    background-size: 100%;
+  color: var(--main-text-color);
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-size: 4px 50px;
+}
+.body{
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.headercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: baseline;
+}
+.header {
+  font-size: 5rem;
+  font-family: 'Pacifico';
+  color: var(--main-title-color);
+  justify-content: center;
+  text-align: left;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  padding-left: 5rem;
+  margin-right: 4rem;
+}
+
+.newbook {
+  font-family: 'Pacifico';
+  font-size: 2rem;
+  
+}
+
+.bookcontainer{
+  width: 70%;
+  border: 8px solid;
+  border-color: var(--accent-color);
+  padding: 1rem;
+  margin: 2rem;
+}
+
+.title {
+  text-decoration-line: none;
+  font-size: 2rem;
+  font-family: 'Abel';
+  margin-left: 2rem;
+  display: flex;
+  margin-bottom: 1rem;
+  
+}
+
+.details {
+  font-size: 1.2rem;
+  font-family: 'Abel';
+  color: var(--main-text-color);
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1rem;
+  font-family: 'Abel';
+  color: var(--main-text-color);
+  margin-left: 3rem;
+  margin-bottom: 1rem;
+}
+
+.edit-delete{
+  font-family: 'Abel';
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+
+}

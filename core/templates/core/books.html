@@ -1,32 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<table>
-  <thead>
-    <tr>
-      <th> My Books</th>
+<body class="body">
+  <div class="headercontainer">
+      <h1 class="header"> My Books </h1>
+      <div class="newbook">
+        <a href="{% url 'new-book' %}" class="button">New Book</a>
+      </div>
+  </div>
 
-    </tr>
-  </thead>
-
-
-
-  <tbody>
     {% for book in books %}
-    <tr>
-      <td><a href="{% url 'books-detail' book.pk %}">{{book.title}}</td>
-      <td>{{book.created_at}}</td>
-      <td>{{book.author}}</td>
-      <td>{{book.description}}</td>
-      <td>{{book.url}}</td>
-      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
-      <td><a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a></td>
-      <td><a href="{% url 'delete-book' pk=book.pk %}" class="button-danger">Delete Book</a></td>
-    </tr></a>
-    {% endfor %}
-  </tbody>
-</table>
+  <div class="bookcontainer">
+    <div>
+      <h3 class="title">
+        <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>  
+      </h3>
+        <p class="details">
+          {{book.author}}
+          {{book.created_at}}
+        </p>
+    </div>
 
+      <div class="description">
+        {{book.description}}
+        <p>
+        {{book.url}}
+        </p>
+      </div>
+   
+    
+      <p>
+        {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+      </p>
+
+      <p class="edit-delete">
+      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+      
+      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+      </p>
+    </div>
+
+    {% endfor %}
+
+  </body>
+<!-- <div>
 <a href="{% url 'new-book' %}" class="button">New Book</a>
+</div> -->
 
 {% endblock %}
