@@ -15,6 +15,9 @@ class Book(models.Model):
     def __str__(self):
         return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url}'
 
+    class Meta:
+        ordering = ['-created_at']
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=40)
