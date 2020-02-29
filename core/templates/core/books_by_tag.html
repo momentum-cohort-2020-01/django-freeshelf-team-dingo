@@ -1,9 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>These are {{tag.name}} Books</h1>
-{% for book in books %}
-<ul>{{book}}</ul>
-{% endfor %}
+<body class="body">
+    {% for book in books %}
+    <div class="headercontainer">
+        <h1 class="header"> {{tag.name}} Books </h1>
+    </div>
+    <div class="bookcontainer">
+        <div>
+            <h3 class="title">
+                <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>
+            </h3>
+            <p class="details">
+                {{book.author}}
+                {{book.created_at}}
+            </p>
+        </div>
+
+        <div class="description">
+            {{book.description}}
+            <p>
+                {{book.url}}
+            </p>
+        </div>
+
+
+        <p>
+            {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+        </p>
+
+        <p class="edit-delete">
+            <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+
+            <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+        </p>
+    </div>
+    {% endfor %}
+</body>
 
 {% endblock %}

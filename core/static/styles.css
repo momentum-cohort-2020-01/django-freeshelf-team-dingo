@@ -63,7 +63,7 @@ a:hover {
 .newbook {
   font-family: 'Pacifico';
   font-size: 2rem;
-  
+  cursor: pointer;
 }
 
 .bookcontainer{
@@ -106,5 +106,4 @@ a:hover {
   flex-direction: row;
   margin-left: 5rem;
   margin-bottom: 1rem;
-
 }
