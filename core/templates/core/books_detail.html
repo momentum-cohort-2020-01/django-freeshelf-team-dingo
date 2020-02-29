@@ -1,14 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
-  {{book.title}}
-  {{book.author}}
-  {{book.description}}
-  {{book.url}}
-</div>
-<div>
-  <a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a>
-  <a href="{% url 'delete-book' pk=book.pk %}" class="deletebutton">Delete Book</a>
-  <a href="{% url 'books' %}" class="button">Home</a>
-</div>
+
+<body class="body">
+  <div class="headercontainer">
+    <h1 class="header"> {{book.title}} Details </h1>
+  </div>
+
+  <div class="bookcontainer">
+    <div>
+      <h3 class="title">
+        <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>
+      </h3>
+      <p class="details">
+        {{book.author}}
+      </p>
+    </div>
+
+    <div class="description">
+      {{book.description}}
+      <p>
+        <a href="{{book.url}}">{{book.url}}</a>
+      </p>
+      <p>
+        Created at: {{book.created_at}}
+      </p>
+    </div>
+
+
+    <p>
+      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+    </p>
+  </div>
+  <div>
+    <a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a>
+    <a href="{% url 'delete-book' pk=book.pk %}" class="deletebutton">Delete Book</a>
+    <a href="{% url 'books' %}" class="button">Home</a>
+  </div>
+
+</body>
 {% endblock %}
