@@ -4,9 +4,6 @@ from django.http import HttpResponse
 from .models import Book, Category
 from .forms import BookForm
 
-# def index(request):
-# 	return HttpResponse ("This is just a text response, unrelated to the database.")
-
 
 def books(request):
     books = Book.objects.all()
@@ -21,6 +18,8 @@ def books_detail(request, pk):
 def new_book(request):
     if request.method == "POST":
         form = BookForm(request.POST)
+        category = request.POST.get('category')
+        form.fields['category'].choices = [(category, category)]
         if form.is_valid():
             book = form.save()
             return redirect('books')
@@ -34,6 +33,8 @@ def edit_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=book)
+        category = request.POST.get('category')
+        form.fields['category'].choices = [(category, category)]
         if form.is_valid():
             book = form.save()
             form.save()

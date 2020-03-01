@@ -1,5 +1,15 @@
 from django.db import models
 
+Categories = (
+    ('html', 'HTML'),
+    ('css', 'CSS'),
+    ('javascript', 'JavaScript'),
+    ('json', 'JSON'),
+    ('ajax', 'AJAX'),
+    ('python', 'Python'),
+    ('django', 'Django')
+)
+
 
 class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -20,7 +30,7 @@ class Book(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=100, choices=Categories)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
