@@ -5,7 +5,11 @@
     {% for book in books %}
     <div class="headercontainer">
         <h1 class="header"> {{tag.name}} Books </h1>
+        <div class="newbook">
+            <a href="{% url 'books' %}">Home</a>
+        </div>
     </div>
+
     <div class="bookcontainer">
         <div>
             <h3 class="title">

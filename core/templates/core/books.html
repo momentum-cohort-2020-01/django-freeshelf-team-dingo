@@ -25,20 +25,21 @@
       <p class="link">
         <a href="{{book.url}}">{{book.url}}</a>
       </p>
-      <p>
-        Created at: {{book.created_at}}
-      </p>
     </div>
 
 
-    <p>
-      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+    <p class="link description">
+      {% if book.tag %}Categories: <a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+    </p>
+
+    <p class="link description">
+      Created: {{book.created_at}}
     </p>
 
     <p class="edit-delete">
-      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+      <a href="{% url 'edit-book' pk=book.pk %}" class="link">Edit Book</a>
 
-      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+      <a href="{% url 'delete-book' pk=book.pk %}" class="link">Delete Book</a>
     </p>
   </div>
 
