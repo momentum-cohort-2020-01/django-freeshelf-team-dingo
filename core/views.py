@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Book, Tag
+from .models import Book, Category
 from .forms import BookForm
 
 # def index(request):
@@ -49,7 +49,7 @@ def delete_book(request, pk):
     return redirect('/')
 
 
-def books_by_tag(request, slug):
-    tag = Tag.objects.get(slug=slug)
-    books_for_tag = Book.objects.filter(tag=tag)
-    return render(request, 'core/books_by_tag.html', {'books': books_for_tag, 'tag': tag})
+def books_by_category(request, slug):
+    category = Category.objects.get(slug=slug)
+    books_for_category = Book.objects.filter(category=category)
+    return render(request, 'core/books_by_category.html', {'books': books_for_category, 'category': category})
