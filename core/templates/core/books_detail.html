@@ -3,7 +3,10 @@
 
 <body class="body">
   <div class="headercontainer">
-    <h1 class="header"> {{book.title}} Details </h1>
+    <h1 class="header"> {{book.title}} </h1>
+      <div class="newbook">
+        <a href="{% url 'books' %}">Home</a>
+      </div>
   </div>
 
   <div class="bookcontainer">
@@ -30,12 +33,15 @@
     <p>
       {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
     </p>
+
+    <p class="edit-delete">
+      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+      <a href="{% url 'books' %}">Home</a>
+    </p>
+
   </div>
-  <div>
-    <a href="{% url 'edit-book' pk=book.pk %}" class="button">Edit Book</a>
-    <a href="{% url 'delete-book' pk=book.pk %}" class="deletebutton">Delete Book</a>
-    <a href="{% url 'books' %}" class="button">Home</a>
-  </div>
+ 
 
 </body>
 {% endblock %}

@@ -5,7 +5,7 @@
   <div class="headercontainer">
     <h1 class="header"> My Books </h1>
     <div class="newbook">
-      <a href="{% url 'new-book' %}" class="button">New Book</a>
+      <a href="{% url 'new-book' %}">New Book</a>
     </div>
   </div>
 
@@ -22,7 +22,7 @@
 
     <div class="description">
       {{book.description}}
-      <p>
+      <p class="link">
         <a href="{{book.url}}">{{book.url}}</a>
       </p>
       <p>
