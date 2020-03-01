@@ -29,7 +29,7 @@
         </div>
 
 
-        <p>
+        <p class="link description">
             {% if book.category %}<a
                 href='{% url "books-by-category" book.category.slug %}'>{{book.category}}</a>{% endif %}
         </p>

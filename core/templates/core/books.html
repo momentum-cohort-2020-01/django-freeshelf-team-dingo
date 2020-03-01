@@ -7,6 +7,12 @@
     <div class="newbook">
       <a href="{% url 'new-book' %}">New Book</a>
     </div>
+    <div class="newbook">
+      {% for category in categories %}
+      <a href="{% url 'books-by-category'%}">{{category.name}}</a>
+      <!--I can't get this to work.  Trying to make a nav bar.  Not sure what's going on but it's not broken at least! -->
+      {% endfor %}
+    </div>
   </div>
 
   {% for book in books %}
@@ -29,7 +35,7 @@
 
 
     <p class="link description">
-      {% if book.category %}Categories: <a
+      {% if book.category %}Category: <a
         href='{% url "books-by-category" book.category.slug %}'>{{book.category}}</a>{% endif %}
     </p>
 
@@ -47,8 +53,5 @@
   {% endfor %}
 
 </body>
-<!-- <div>
-<a href="{% url 'new-book' %}" class="button">New Book</a>
-</div> -->
 
 {% endblock %}
