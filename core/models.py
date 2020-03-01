@@ -1,13 +1,13 @@
 from django.db import models
 
 Categories = (
-    ('html', 'HTML'),
-    ('css', 'CSS'),
-    ('javascript', 'JavaScript'),
-    ('json', 'JSON'),
-    ('ajax', 'AJAX'),
-    ('python', 'Python'),
-    ('django', 'Django')
+    ('HTML', 'HTML'),
+    ('CSS', 'CSS'),
+    ('JavaScript', 'JavaScript'),
+    ('JSON', 'JSON'),
+    ('AJAX', 'AJAX'),
+    ('Python', 'Python'),
+    ('Django', 'Django')
 )
 
 
