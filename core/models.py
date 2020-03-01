@@ -1,5 +1,15 @@
 from django.db import models
 
+Categories = (
+    ('HTML', 'HTML'),
+    ('CSS', 'CSS'),
+    ('JavaScript', 'JavaScript'),
+    ('JSON', 'JSON'),
+    ('AJAX', 'AJAX'),
+    ('Python', 'Python'),
+    ('Django', 'Django')
+)
+
 
 class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -9,18 +19,18 @@ class Book(models.Model):
     url = models.URLField(max_length=200)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now=True)
-    tag = models.ForeignKey(
-        'Tag', on_delete=models.DO_NOTHING, null=True, blank=True)
+    category = models.ForeignKey(
+        'Category', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
-        return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url}'
+        return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url} Category: {self.category}'
 
     class Meta:
         ordering = ['-created_at']
 
 
-class Tag(models.Model):
-    name = models.CharField(max_length=40)
+class Category(models.Model):
+    name = models.CharField(max_length=100, choices=Categories)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
