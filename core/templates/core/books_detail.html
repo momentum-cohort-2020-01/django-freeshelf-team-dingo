@@ -11,7 +11,7 @@
 
   <div class="bookcontainer">
     <div>
-      <h3 class="title">
+      <h3 class="title link">
         <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>
       </h3>
       <p class="details">
@@ -19,9 +19,9 @@
       </p>
     </div>
 
-    <div class="description">
+    <div class="link description">
       {{book.description}}
-      <p>
+      <p class="link">
         <a href="{{book.url}}">{{book.url}}</a>
       </p>
       <p>
