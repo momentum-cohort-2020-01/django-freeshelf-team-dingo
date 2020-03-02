@@ -121,5 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+ACCOUNT_ACTIVATION_DAYS = 14
 LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
