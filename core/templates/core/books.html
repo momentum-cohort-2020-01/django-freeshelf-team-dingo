@@ -22,6 +22,7 @@
         <a class="description link" href='/books/Django/'> Django </a>
         <a class="description link" href='/books/AJAX/'> AJAX </a>
         <a class="description link" href='/books/JSON/'> JSON </a>
+        <a class="description link" href="{% url 'books-by-favorites'%}">Favorites</a>
       </div>
     </div>
   </div>
@@ -51,6 +52,12 @@
     <p>
       {% if book.category %}<a class="link description"
         href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
+    </p>
+
+    <p>
+      {% if book.favorite %}
+      {{book.favorite}}
+      {% endif %}
     </p>
 
     <p class="edit-delete link">
