@@ -7,6 +7,9 @@
     <div class="newbook">
       <a href="{% url 'books' %}">Home</a>
     </div>
+    <div>
+      <a class="logout description link" href="accounts/logout/">Logout</a>
+    </div>
   </div>
 
   <div class="bookcontainer">
@@ -36,7 +39,8 @@
 
     <p class="edit-delete">
       <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
-      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
+      <a href="{% url 'delete-book' pk=book.pk %}"
+        onclick="return confirm('Are you sure you want to delete this?')">Delete Book</a>
     </p>
 
   </div>
