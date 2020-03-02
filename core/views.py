@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Book, Category
 from .forms import BookForm
 
-
+@login_required
 def books(request):
     books = Book.objects.all()
     return render(request, 'core/books.html', {'books': books})

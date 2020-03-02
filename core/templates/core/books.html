@@ -5,13 +5,7 @@
   <div class="headercontainer">
     <h1 class="header"> My Books </h1>
     <div class="newbook">
-      <a href="{% url 'new-book' %}">New Book</a>
-    </div>
-    <div class="newbook">
-      {% for category in categories %}
-      <a href="{% url 'books-by-category'%}">{{category.name}}</a>
-      <!--I can't get this to work.  Trying to make a nav bar.  Not sure what's going on but it's not broken at least! -->
-      {% endfor %}
+      <a href="{% url 'new-book' %}" class="newbook">New Book</a>
     </div>
   </div>
 
@@ -26,32 +20,33 @@
       </p>
     </div>
 
-    <div class="description">
+    <div class="description link">
       {{book.description}}
       <p class="link">
         <a href="{{book.url}}">{{book.url}}</a>
       </p>
+      <p class= "link">
+        Created at: {{book.created_at}}
+      </p>
     </div>
 
 
-    <p class="link description">
-      {% if book.category %}Category: <a
-        href='{% url "books-by-category" book.category.slug %}'>{{book.category}}</a>{% endif %}
-    </p>
-
-    <p class="link description">
-      Created: {{book.created_at}}
+    <p>
+      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
     </p>
 
     <p class="edit-delete">
-      <a href="{% url 'edit-book' pk=book.pk %}" class="link">Edit Book</a>
+      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
 
-      <a href="{% url 'delete-book' pk=book.pk %}" class="link">Delete Book</a>
+      <a href="{% url 'delete-book' pk=book.pk %}">Delete Book</a>
     </p>
   </div>
 
   {% endfor %}
 
 </body>
+<!-- <div>
+<a href="{% url 'new-book' %}" class="button">New Book</a>
+</div> -->
 
 {% endblock %}
