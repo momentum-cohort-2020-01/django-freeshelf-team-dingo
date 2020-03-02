@@ -7,6 +7,12 @@
     <div class="newbook">
       <a href="{% url 'new-book' %}" class="newbook">New Book</a>
     </div>
+    <div>
+      <p>
+        <a class="login new-book" href="accounts/login/">Login | Register</a>
+        <a class="logout new-book" href="accounts/logout/">Logout</a>
+      </p>
+    </div>
   </div>
 
   {% for book in books %}
@@ -25,14 +31,15 @@
       <p class="link">
         <a href="{{book.url}}">{{book.url}}</a>
       </p>
-      <p class= "link">
+      <p class="link">
         Created at: {{book.created_at}}
       </p>
     </div>
 
 
     <p>
-      {% if book.tag %}<a href='{% url "books-by-tag" book.tag.slug %}'>{{book.tag}}</a>{% endif %}
+      {% if book.category %}<a class="link description"
+        href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
     </p>
 
     <p class="edit-delete">

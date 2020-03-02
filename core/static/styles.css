@@ -140,3 +140,7 @@ a:hover {
   border-top-color: var(--main-text-color);
   background: var(--accent-color2);
   }
+
+.login, .logout{
+  justify-content: right;
+}
