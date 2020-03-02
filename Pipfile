@@ -8,7 +8,7 @@ autopep8 = "*"
 
 [packages]
 django = "*"
-python = "*"
+django-registration-redux = "*"
 
 [requires]
 python_version = "3.7"

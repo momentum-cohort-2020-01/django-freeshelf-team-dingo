@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User 
 from django.db import models
+from django.utils.text import slugify
 
 Categories = (
     ('HTML', 'HTML'),
@@ -21,6 +23,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(
         'Category', on_delete=models.DO_NOTHING, null=True, blank=True)
+    
 
     def __str__(self):
         return f'Book title: {self.title} Author: {self.author} Description: {self.description} URL: {self.url} Category: {self.category}'
@@ -40,3 +43,5 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
+# class User(AbstractUser)
