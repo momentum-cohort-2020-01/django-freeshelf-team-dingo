@@ -49,6 +49,7 @@ a:hover {
   flex-direction: row;
   align-items: baseline;
 }
+
 .header {
   font-size: 5rem;
   font-family: 'Pacifico';
@@ -59,12 +60,35 @@ a:hover {
   padding-bottom: 1.5rem;
   padding-left: 5rem;
   margin-right: 4rem;
+  align-items: baseline;
+}
+
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: 7rem;
+
+}
+
+.categories {
+  font-size: 2rem;
+  font-family: 'Abel';
+  margin-left: 2rem;
+  display: flex;
+  margin-bottom: 1rem;
 }
 
 .newbook {
   font-family: 'Pacifico';
   font-size: 2rem;
   cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 .bookcontainer{
@@ -73,6 +97,7 @@ a:hover {
   border-color: var(--accent-color);
   padding: 1rem;
   margin: 2rem;
+  border-radius: 10px;
 }
 
 .title {
@@ -140,7 +165,3 @@ a:hover {
   border-top-color: var(--main-text-color);
   background: var(--accent-color2);
   }
-
-.login, .logout{
-  justify-content: right;
-}
