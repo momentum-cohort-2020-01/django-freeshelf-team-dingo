@@ -45,3 +45,11 @@ class Category(models.Model):
         return super().save(*args, **kwargs)
 
 # class User(AbstractUser)
+
+class Favorite(models.Model):
+    my_favorite = models.ForiegnKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'my_favorite: {self.my_favorite}, Book: {self.book}'
+
