@@ -23,7 +23,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(
         'Category', on_delete=models.DO_NOTHING, null=True, blank=True)
-    favorite = models.ForeignKey(
+    favorite = models.ForeignKey(  # Maybe boolean?
         'Favorite', related_name='+', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):

@@ -22,7 +22,7 @@ def new_book(request):
         form = BookForm(request.POST)
         category = request.POST.get('category')
         form.fields['category'].choices = [(category, category)]
-        is_favorite = request.POST.get('favorite')
+        is_favorite = request.GET.get('favorite')
         form.fields['favorite'].booleanfield = is_favorite
         if form.is_valid():
             book = form.save()
@@ -39,7 +39,7 @@ def edit_book(request, pk):
         form = BookForm(request.POST, instance=book)
         category = request.POST.get('category')
         form.fields['category'].choices = [(category, category)]
-        is_favorite = request.POST.get('favorite')
+        is_favorite = request.GET.get('favorite')
         form.fields['favorite'].booleanfield = is_favorite
         if form.is_valid():
             book = form.save()
