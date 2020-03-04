@@ -12,11 +12,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--background-color);
-  display: flex;
-}
-
 a {
   background:
      linear-gradient(
@@ -36,7 +31,35 @@ a:hover {
   background-size: 4px 50px;
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+.headercontainer, .header, .login, .categories, .newbook{
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.bookcontainer, .title, .details, .description, .link, .edit-delete, .button, .categories{
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+}
+
 .body{
+  background-color: var(--background-color);
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   margin-left: 3rem;
@@ -53,6 +76,7 @@ a:hover {
 }
 
 .header {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
   font-size: 5rem;
   font-family: 'Pacifico';
   color: var(--main-title-color);

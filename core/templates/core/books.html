@@ -50,14 +50,17 @@
     </div>
 
 
-    <p>
+    <p class="link description">
       {% if book.category %}<a class="link description"
         href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
     </p>
 
-    <p>This is going to be an awesome icon for indicating favorite.</p>
 
-
+    {% if book.favorite %}
+    <p class="link description">
+      Favorited!
+    </p>
+    {% endif %}
 
 
     <p class="edit-delete link">
