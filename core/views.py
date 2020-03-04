@@ -2,8 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Book, Category
+from .models import Book, Category, Favorite, User
 from .forms import BookForm
+
 
 @login_required
 def books(request):
@@ -55,3 +56,9 @@ def books_by_category(request, slug):
     category = Category.objects.get(slug=slug)
     books_for_category = Book.objects.filter(category=category)
     return render(request, 'core/books_by_category.html', {'books': books_for_category, 'category': category})
+
+
+def get_favorite_books_for_user(request):
+    user = User.objects.get(username=request.user.username)
+    favorite_books = Book.objects.filter(favorite=True)
+    return render(request, 'core/books_by_favorites.html', {'books': favorite_books, 'user': user})

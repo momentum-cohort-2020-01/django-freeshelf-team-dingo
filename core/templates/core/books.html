@@ -4,27 +4,29 @@
 <body class="body">
   <div class="headercontainer">
     <p>
-    <h1 class="header"> My Books </h1>
-    <div class="newbook">
-      <a href="{% url 'new-book' %}" class="newbook">New Book</a>
-    </div>
+      <h1 class="header"> My Books </h1>
+      <div class="newbook">
+        <a href="{% url 'new-book' %}" class="newbook">New Book</a>
+      </div>
     </p>
     <p class="login">
-     <a class="description link" href="accounts/login/">Login | Register</a>
-     <a class="description link" href="accounts/logout/">Logout</a>
+      <a class="description link" href="accounts/login/">Login | Register</a>
+      <a class="description link" href="accounts/logout/">Logout</a>
     </p>
   </div>
-    <div class= "headercontainer categories">
-      <p class="description link">Books by category: </p>
-        <a class="description link" href='/books/'> All </a>
-        <a class="description link" href='/books/HTML/'> HTML </a>
-        <a class="description link" href='/books/CSS/'> CSS </a>
-        <a class="description link" href='/books/JavaScript/'> JavaScript </a>
-        <a class="description link" href='/books/Python/'> Python </a>
-        <a class="description link" href='/books/Django/'> Django </a>
-        <a class="description link" href='/books/AJAX/'> AJAX </a>
-        <a class="description link" href='/books/JSON/'> JSON </a>
-    </div>
+  <div class="headercontainer categories">
+    <p class="description link">Books by category: </p>
+    <a class="description link" href='/'> All </a>
+    <a class="description link" href='/books/HTML/'> HTML </a>
+    <a class="description link" href='/books/CSS/'> CSS </a>
+    <a class="description link" href='/books/JavaScript/'> JavaScript </a>
+    <a class="description link" href='/books/Python/'> Python </a>
+    <a class="description link" href='/books/Django/'> Django </a>
+    <a class="description link" href='/books/AJAX/'> AJAX </a>
+    <a class="description link" href='/books/JSON/'> JSON </a>
+    <a class="description link" href='{% url "books-by-favorites" %}'>Favorites</a>
+  </div>
+  </div>
 
   {% for book in books %}
   <div class="bookcontainer">
@@ -48,10 +50,18 @@
     </div>
 
 
-    <p>
+    <p class="link description">
       {% if book.category %}<a class="link description"
         href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
     </p>
+
+
+    {% if book.favorite %}
+    <p class="link description">
+      Favorited!
+    </p>
+    {% endif %}
+
 
     <p class="edit-delete link">
       <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
