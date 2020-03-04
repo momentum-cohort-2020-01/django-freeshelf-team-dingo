@@ -59,7 +59,13 @@
       <a class="confirm-delete link" href="{% url 'delete-book' pk=book.pk %}"
         onclick="return confirm('Are you sure you want to delete this?')">Delete Book</a>
     </p>
+    {% if todo in favorite_book %}
+    <p>
+      Favorite Icon
+      {% endif %}
+    </p>
   </div>
+
 
   {% endfor %}
 

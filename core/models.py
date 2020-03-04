@@ -47,9 +47,9 @@ class Category(models.Model):
 # class User(AbstractUser)
 
 class Favorite(models.Model):
-    my_favorite = models.ForiegnKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    my_favorite = models.ForeignKey(User, related_name="favorites", on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, related_name="favorites", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'my_favorite: {self.my_favorite}, Book: {self.book}'
+        return f'My_favorite: {self.my_favorite}, Book: {self.book}'
 
