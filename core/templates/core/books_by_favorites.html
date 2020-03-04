@@ -12,7 +12,7 @@
             <a class="logout description link" href="accounts/logout/">Logout</a>
         </div>
     </div>
-    {% if book.favorite %}
+
     {% for book in books %}
     <div class="bookcontainer">
         <div>
@@ -34,8 +34,8 @@
 
 
         <p class="link description">
-            {% if book.category %}<a
-                href='{% url "books-by-category" book.category.slug %}'>{{book.category}}</a>{% endif %}
+            {% if book.category %}<a href='{% url "books-by-category" book.category.slug %}'>{{book.category}}</a>
+            {% endif %}
         </p>
 
         <p class="edit-delete">
@@ -46,7 +46,7 @@
         </p>
     </div>
     {% endfor %}
-    {% endif %}
+
 </body>
 
 {% endblock %}

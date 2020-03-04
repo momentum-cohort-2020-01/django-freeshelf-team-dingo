@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Book, Category, Favorite
+from .models import Book, Category, Favorite, User
 from .forms import BookForm
 
 
@@ -22,8 +22,6 @@ def new_book(request):
         form = BookForm(request.POST)
         category = request.POST.get('category')
         form.fields['category'].choices = [(category, category)]
-        is_favorite = request.GET.get('favorite')
-        form.fields['favorite'].booleanfield = is_favorite
         if form.is_valid():
             book = form.save()
             return redirect('books')
@@ -39,8 +37,6 @@ def edit_book(request, pk):
         form = BookForm(request.POST, instance=book)
         category = request.POST.get('category')
         form.fields['category'].choices = [(category, category)]
-        is_favorite = request.GET.get('favorite')
-        form.fields['favorite'].booleanfield = is_favorite
         if form.is_valid():
             book = form.save()
             form.save()
@@ -62,7 +58,7 @@ def books_by_category(request, slug):
     return render(request, 'core/books_by_category.html', {'books': books_for_category, 'category': category})
 
 
-def books_by_favorites(request, book):
-    favorite = Favorite.objects.get(book)
-    books_for_favorites = Book.objects.filter(is_favorite=True)
-    return render(request, 'core/books_by_favorites.html', {'books': books_for_favorites, 'favorite': favorite})
+def get_favorite_books_for_user(request):
+    user = User.objects.get(username=request.user.username)
+    favorite_books = Book.objects.filter(favorite=True)
+    return render(request, 'core/books_by_favorites.html', {'books': favorite_books, 'user': user})

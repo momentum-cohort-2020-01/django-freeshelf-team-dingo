@@ -16,7 +16,7 @@
   </div>
   <div class="headercontainer categories">
     <p class="description link">Books by category: </p>
-    <a class="description link" href='/books/'> All </a>
+    <a class="description link" href='/'> All </a>
     <a class="description link" href='/books/HTML/'> HTML </a>
     <a class="description link" href='/books/CSS/'> CSS </a>
     <a class="description link" href='/books/JavaScript/'> JavaScript </a>
@@ -24,7 +24,7 @@
     <a class="description link" href='/books/Django/'> Django </a>
     <a class="description link" href='/books/AJAX/'> AJAX </a>
     <a class="description link" href='/books/JSON/'> JSON </a>
-    <a class="description link" href="{% url 'books-by-favorites'%}">Favorites</a>
+    <a class="description link" href='{% url "books-by-favorites" %}'>Favorites</a>
   </div>
   </div>
 
@@ -55,11 +55,10 @@
         href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
     </p>
 
-    <p>
-      {% if book.favorite %}
-      {{book.favorite}}
-      {% endif %}
-    </p>
+    <p>This is going to be an awesome icon for indicating favorite.</p>
+
+
+
 
     <p class="edit-delete link">
       <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
