@@ -56,6 +56,7 @@ def books_by_category(request, slug):
     books_for_category = Book.objects.filter(category=category)
     return render(request, 'core/books_by_category.html', {'books': books_for_category, 'category': category})
 
+
 def get_favorite_books_for_user(request):
     user = User.objects.get(username=request.user.username)
     favorite_books = [favorite.book for favorite in user.favorites.all()]
